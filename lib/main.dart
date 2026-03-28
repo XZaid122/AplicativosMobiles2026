@@ -4,8 +4,22 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int contador = 0; 
+
+  void incrementarContador() {
+    setState(() {
+      contador++; 
+    });
+    print("Botón presionado: $contador veces");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +29,29 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Unitecnar 5.0'),
         ),
-        body: const Center(
-          child: Text('Hola Mundo, Hola Werachamo'),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Hola Mundo, Hola Werachamo',
+                style: TextStyle(fontSize: 20),
+              ),
+              const SizedBox(height: 30), 
+              Text(
+                'Veces presionado: $contador',
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
+            ],
+          ),
         ),
         floatingActionButton: _CustomButton(
           icon: Icons.add,
-          onPressed: () {
-            print("Botón");
-          },
+          onPressed: incrementarContador, 
         ),
       ),
     );
