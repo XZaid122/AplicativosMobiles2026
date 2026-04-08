@@ -62,7 +62,7 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
 
-        // 🔽 Aquí agregamos múltiples botones
+        
         floatingActionButton: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
